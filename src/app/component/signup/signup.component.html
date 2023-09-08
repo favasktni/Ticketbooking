@@ -1,0 +1,43 @@
+
+<div class="  w-screen h-screen flex "> 
+    <nav>
+    </nav>
+    <img src="https://www.filmibeat.com/ph-big/2023/05/kushi-2023_168362420150.jpg" class="absolute h-screen w-screen object-cover sm:hidden blur-sm">
+    <img src="https://i.ytimg.com/vi/ViuGKPazWWw/sddefault.jpg" class="hidden md:block absolute w-screen h-screen object-cover blur-sm">
+  
+   <div class=" mt-10 ml-5 md:mt-[10rem] md:ml-[45rem]  relative">
+    <form [formGroup]="regiestrationForm " (ngSubmit)="onsubmit()">
+      <label class="text-white font-serif ml-2">First Name  </label> <br><br>
+      <input type="text" placeholder="First Name" class="  w-[20rem] h-[3rem] border-none rounded-sm pl-2 outline-none" formControlName="firstName" [ngClass]="{'is-invalid':submit&&f.firstName.errors}"> <br><br>
+       <div *ngIf="submit&&f.firstName.errors">
+        <div *ngIf="submit&&f.firstName.errors" class="text-red-700">First name required</div>
+       </div> <br> 
+    
+      <label class="text-white font-serif ml-2">Last Name  </label> <br><br>
+      <input type="text" placeholder="Last Name" class="w-[20rem] h-[3rem] border-none rounded-sm pl-2 outline-none" formControlName="lastName" [ngClass]="{'is-invalid':submit&&f.lastName.errors}"> <br><br>
+    
+      <div *ngIf="submit&&f.lastName.errors">
+        <div *ngIf="submit&&f.lastName.errors" class="text-red-700">Last name required</div>
+       </div> <br> 
+    
+      <label class="text-white font-serif ml-2">Phone  </label> <br><br>
+      <input type="number" placeholder="Phone" class="w-[20rem] h-[3rem] border-none rounded-sm pl-2 outline-none" formControlName="phone" [ngClass]="{'is-invalid':submit&&f.phone.errors} "  pattern="((\\+91-?)|0)?[0-9]{10}$"> <br><br>
+    
+      <div *ngIf="submit&&f.phone.errors">
+        <div *ngIf="submit&&f.phone.errors" class="text-red-700">Phone number required</div>
+        <div *ngIf="submit&&f.phone.errors?.['pattern']" class="text-red-700">Phone not valid</div>
+       </div> <br> 
+    
+      <label class="text-white font-serif ml-2">Email  </label> <br><br>
+      <input type="email" placeholder="Email" class="w-[20rem] h-[3rem] border-none rounded-sm pl-2 outline-none" formControlName="email" [ngClass]="{'is-invalid':submit&&f.email.errors}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> <br><br>
+    
+       <div *ngIf="submit&&f.email.errors">
+        <div *ngIf="submit&&f.email.errors" class="text-red-700">Email required</div>
+        <div *ngIf="submit&&f.email.errors?.['pattern']" class="text-red-700">Email not valid </div>
+       </div> <br> 
+      <button class="w-[10rem] ml-[5rem] md:ml-0 md:w-[6rem] h-10 bg-pink-500 text-white shadow-md" (click)=" Login()" routerLink="header">Signup</button>
+    </form>
+   </div>
+  </div>
+  <router-outlet></router-outlet>
+  
